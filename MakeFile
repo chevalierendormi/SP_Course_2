@@ -1,0 +1,24 @@
+CC = g++
+CFLAGS = -std=c++11 -Wall
+
+# Project name
+TARGET = calculator
+
+# Source files
+SRC = main.cpp calculator.cpp
+
+# Object files
+OBJ = $(SRC:.cpp=.o)
+
+# Include directories
+INCLUDES = -I.
+
+# Compiler and linker commands
+$(TARGET): $(OBJ)
+	$(CC) $(OBJ) -o $(TARGET)
+
+%.o: %.cpp
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+clean:
+	rm -f $(OBJ) $(TARGET)
